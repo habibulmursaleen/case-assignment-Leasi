@@ -25,9 +25,44 @@ const EquipmentsTable = () => {
 
     fetchData();
   }, []);
+  console.log(equipments);
+
+  const deleteEquipment = async (equipmentId) => {
+    console.log(equipmentId);
+    try {
+      const response = await fetch(
+        `http://localhost:9000/equipment/${equipmentId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to delete equipment");
+      }
+
+      setEquipments((prevEquipments) =>
+        prevEquipments.filter((equipment) => equipment.id !== equipmentId)
+      );
+    } catch (error) {
+      console.error("Error deleting equipment:", error);
+    }
+  };
 
   return (
     <div>
+      <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
+        <button
+          type="submit"
+          className="btn ml-2 mt-3"
+          onClick={() => setShowModal(true)}
+        >
+          Add new
+        </button>
+      </div>
       <div className="overflow-x-auto mt-4">
         <table className="divide-y-1 text-base divide-gray-600 w-full">
           <thead>
@@ -52,6 +87,7 @@ const EquipmentsTable = () => {
                       viewBox="0 0 24 24"
                       strokeWidth="1.5"
                       stroke="currentColor"
+                      onClick={() => deleteEquipment(equipment._id)}
                       className="w-6 h-6 hover:text-red-500 cursor-pointer transition-all"
                     >
                       <path
@@ -65,6 +101,7 @@ const EquipmentsTable = () => {
                       viewBox="0 0 24 24"
                       strokeWidth="1.5"
                       stroke="currentColor"
+                      onClick={() => setShowModal(true)}
                       className="w-6 h-6 hover:text-blue-500 cursor-pointer transition-all"
                     >
                       <path

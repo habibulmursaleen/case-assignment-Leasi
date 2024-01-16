@@ -12,7 +12,9 @@ const EquipmentsEditModal = ({ setShowModal, showModal }) => {
       {showModal && (
         <div>
           <div className="p-8 overflow-hidden bg-white shadow-cardShadow rounded-md max-w-xl mx-auto">
-            <h2 className="mb-8 text-xl font-bold text-center">Edit Video</h2>
+            <h2 className="mb-8 text-xl font-bold text-center">
+              Add/Edit Equipment
+            </h2>
             <form method="POST">
               <div className="shadow overflow-hidden sm:rounded-md">
                 <div className="px-4 py-5 bg-white sm:p-6">
@@ -32,7 +34,7 @@ const EquipmentsEditModal = ({ setShowModal, showModal }) => {
                 </div>
                 <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                   <button type="submit" className="btn ml-2 mt-3">
-                    Update
+                    Save
                   </button>
 
                   <button className="btn ml-2 mt-3" onClick={handleCancle}>
