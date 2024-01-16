@@ -24,7 +24,7 @@ const EquipmentsTable = () => {
     };
 
     fetchData();
-  }, []);
+  }, [equipments]);
   console.log(equipments);
 
   const deleteEquipment = async (equipmentId) => {
